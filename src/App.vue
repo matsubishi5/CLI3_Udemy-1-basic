@@ -13,7 +13,7 @@
     <div>
       <h3>イベントのフォーム</h3>
       <label for="title">タイトル</label>
-      <input id="title" type="text" v-model="eventData.title" />
+      <input id="title" type="text" v-model.lazy="eventData.title" />
       <p>{{ eventData.title }}</p>
     </div>
   </div>

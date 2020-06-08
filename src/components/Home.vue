@@ -1,7 +1,7 @@
 <template>
   <div>
     <p v-border:solid.round.shadow="{ width: '5px', color: 'blue' }">Home</p>
-    <p>{{ title | upperCase}}</p>
+    <p>{{ title | upperCase | lowerCase}}</p>
     <p>{{ subTitle | upperCase}}</p>
   </div>
 </template>
@@ -26,6 +26,12 @@ export default {
       if (binding.modifiers.shadow) {
         el.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.26)";
       }
+    }
+  },
+
+  filters: {
+    lowerCase(value) {
+      return value.toLowerCase();
     }
   }
 };

@@ -12,9 +12,8 @@
     </keep-alive>
     <div>
       <h3>イベントのフォーム</h3>
-      <label for="title">タイトル</label>
-      <input id="title" type="text" v-model.lazy="eventData.title" />
-      <p>{{ eventData.title }}</p>
+
+      <EventTitle v-model="eventData.title"></EventTitle>
 
       <label for="detail">内容</label>
       <textarea id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
@@ -40,7 +39,7 @@
       <input type="radio" id="payed" value="有料" v-model="eventData.price" />
 
       <p>開催場所</p>
-      <select v-model="eventData.prefecture" multiple>
+      <select v-model="eventData.prefecture">
         <option v-for="prefecture in eventData.prefectures" :key="prefecture">{{ prefecture }}</option>
       </select>
       <p>{{ eventData.prefecture }}</p>
@@ -52,6 +51,7 @@
 import LikeHeader from "./components/LikeHeader.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
+import EventTitle from "./components/EventTitle.vue";
 
 export default {
   data() {
@@ -73,7 +73,8 @@ export default {
   components: {
     LikeHeader,
     Home,
-    About
+    About,
+    EventTitle
   },
 
   methods: {

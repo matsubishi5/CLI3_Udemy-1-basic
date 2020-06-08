@@ -38,6 +38,12 @@
 
       <label for="payed">有料</label>
       <input type="radio" id="payed" value="有料" v-model="eventData.price" />
+
+      <p>開催場所</p>
+      <select v-model="eventData.prefecture" multiple>
+        <option v-for="prefecture in eventData.prefectures" :key="prefecture">{{ prefecture }}</option>
+      </select>
+      <p>{{ eventData.prefecture }}</p>
     </div>
   </div>
 </template>
@@ -57,7 +63,9 @@ export default {
         detail: "",
         isPrivate: false,
         target: [],
-        price: "無料"
+        price: "無料",
+        prefectures: ["東京", "大阪", "愛知", "広島", "福岡"],
+        prefecture: "東京"
       }
     };
   },

@@ -15,6 +15,10 @@
       <label for="title">タイトル</label>
       <input id="title" type="text" v-model.lazy="eventData.title" />
       <p>{{ eventData.title }}</p>
+
+      <label for="detail">内容</label>
+      <textarea id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
+      <pre>{{ eventData.detail }}</pre>
     </div>
   </div>
 </template>
@@ -30,7 +34,8 @@ export default {
       number: 20,
       currentComponent: "Home",
       eventData: {
-        title: "タイトル"
+        title: "",
+        detail: ""
       }
     };
   },

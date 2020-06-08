@@ -31,6 +31,13 @@
       <input type="checkbox" id="20" value="20代" v-model="eventData.target" />
       <label for="30">30代</label>
       <input type="checkbox" id="30" value="30代" v-model="eventData.target" />
+
+      <p>参加費用</p>
+      <label for="free">無料</label>
+      <input type="radio" id="free" value="無料" v-model="eventData.price" />
+
+      <label for="payed">有料</label>
+      <input type="radio" id="payed" value="有料" v-model="eventData.price" />
     </div>
   </div>
 </template>
@@ -49,7 +56,8 @@ export default {
         title: "",
         detail: "",
         isPrivate: false,
-        target: []
+        target: [],
+        price: "無料"
       }
     };
   },

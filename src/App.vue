@@ -19,6 +19,10 @@
       <label for="detail">内容</label>
       <textarea id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
       <pre>{{ eventData.detail }}</pre>
+
+      <label for="isPrivate">非公開</label>
+      <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate" />
+      <p>{{ eventData.isPrivate }}</p>
     </div>
   </div>
 </template>
@@ -35,7 +39,8 @@ export default {
       currentComponent: "Home",
       eventData: {
         title: "",
-        detail: ""
+        detail: "",
+        isPrivate: false
       }
     };
   },

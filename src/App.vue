@@ -1,7 +1,9 @@
 <template>
   <div>
-    <LikeHeader></LikeHeader>
-    <h2>{{ number }}</h2>
+    <LikeHeader>
+      <h1>トータルいいね数</h1>
+      <h2>{{ number }}</h2>
+    </LikeHeader>
     <LikeNumber :total-number="number" test-props="テストです" @my-click="incrementNumber"></LikeNumber>
   </div>
 </template>

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <slot name="title" :user="user"></slot>
-    <hr />
-    <p>いいね数</p>
-    <slot name="number"></slot>
-    <slot></slot>
+    <slot :user="user"></slot>
   </div>
 </template>
 

@@ -3,16 +3,19 @@
     <p v-border:solid.round.shadow="{ width: '5px', color: 'blue' }">Home</p>
     <p>{{ title | upperCase | lowerCase}}</p>
     <p>{{ subTitle | upperCase}}</p>
+    <CountNumber></CountNumber>
   </div>
 </template>
 
 <script>
+import CountNumber from "./CountNumber.vue";
+import { title } from "@/title";
+
 export default {
-  data() {
-    return {
-      title: "title",
-      subTitle: "sub title"
-    };
+  mixins: [title],
+
+  components: {
+    CountNumber
   },
 
   directives: {
@@ -26,12 +29,6 @@ export default {
       if (binding.modifiers.shadow) {
         el.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.26)";
       }
-    }
-  },
-
-  filters: {
-    lowerCase(value) {
-      return value.toLowerCase();
     }
   }
 };

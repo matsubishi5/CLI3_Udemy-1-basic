@@ -11,7 +11,7 @@
 import LikeHeader from "./components/LikeHeader.vue";
 
 export default {
-  data: function() {
+  data() {
     return {
       number: 10
     };

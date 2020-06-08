@@ -2,7 +2,7 @@
   <div>
     <LikeHeader></LikeHeader>
     <h2>{{ number }}</h2>
-    <LikeNumber :total-number="number"></LikeNumber>
+    <LikeNumber :total-number="number" test-props="テストです"></LikeNumber>
     <LikeNumber></LikeNumber>
   </div>
 </template>

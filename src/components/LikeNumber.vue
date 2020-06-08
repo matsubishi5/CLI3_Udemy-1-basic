@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>いいね{{ halfNumber }}</p>
+    <p>{{ testProps }}</p>
     <button @click="increment">+1</button>
   </div>
 </template>
@@ -12,6 +13,9 @@ export default {
       type: Number,
       // required: true,
       default: 10
+    },
+    testProps: {
+      type: String
     }
   },
 

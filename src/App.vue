@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Transition></Transition>
     <LikeHeader>
       <h1>初めまして</h1>
     </LikeHeader>
@@ -52,6 +53,7 @@ import LikeHeader from "./components/LikeHeader.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 import EventTitle from "./components/EventTitle.vue";
+import Transition from "./components/Transition.vue";
 
 export default {
   data() {
@@ -74,7 +76,8 @@ export default {
     LikeHeader,
     Home,
     About,
-    EventTitle
+    EventTitle,
+    Transition
   },
 
   methods: {

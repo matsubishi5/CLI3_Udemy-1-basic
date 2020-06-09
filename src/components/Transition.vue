@@ -18,6 +18,17 @@
     <transition :css="false" @enter="enter" @leave="leave">
       <div class="circle" v-if="show"></div>
     </transition>
+
+    <button @click="add">追加</button>
+    <ul>
+      <transition-group name="fade" tag="div">
+        <li
+          v-for="(number, index) in numbers"
+          :key="number"
+          @click="remove(index)"
+        >{{ index }}:{{ number }}</li>
+      </transition-group>
+    </ul>
   </div>
 </template>
 
@@ -30,12 +41,23 @@ export default {
     return {
       show: true,
       myAnimation: "slide",
-      myComponent: TransitionComponentA
+      myComponent: TransitionComponentA,
+      numbers: [0, 1, 2],
+      nextNumber: 3
     };
   },
 
   methods: {
-    // beforeEnter(el, done) {},
+    randomIndex() {
+      return Math.floor(Math.random() * this.numbers.length);
+    },
+    add() {
+      this.numbers.splice(this.randomIndex(), 0, this.nextNumber);
+      this.nextNumber++;
+    },
+    remove(index) {
+      this.numbers.splice(index, 1);
+    },
     enter(el, done) {
       let scale = 0;
       const interval = setInterval(() => {
@@ -47,9 +69,6 @@ export default {
         }
       }, 20);
     },
-    // afterEnter(el, done) {},
-    // enterCancelled(el, done) {},
-    // beforeLeave(el, done) {},
     leave(el, done) {
       let scale = 1;
       const interval = setInterval(() => {
@@ -61,8 +80,6 @@ export default {
         }
       }, 20);
     }
-    // afterLeave(el, done) {},
-    // leaveCancelled(el, done) {}
   },
 
   components: {
@@ -81,6 +98,9 @@ export default {
   border-radius: 100px;
 }
 
+.fade-move {
+  transition: transform 1s;
+}
 .fade-enter {
   opacity: 0;
 }
@@ -95,6 +115,7 @@ export default {
 }
 .fade-leave-active {
   transition: opacity 0.5s;
+  position: absolute;
 }
 .fade-leave-to {
   opacity: 0;

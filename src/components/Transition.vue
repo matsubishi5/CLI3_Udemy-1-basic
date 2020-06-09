@@ -1,11 +1,11 @@
 <template>
   <div>
+    <button @click="myAnimation = 'slide'">スライド</button>
+    <button @click="myAnimation = 'fade'">フェード</button>
+    <p>{{ myAnimation }}</p>
     <button @click="show = !show">表示切り替え</button>
-    <transition enter-active-class="animated bounce" leave-active-class="animated shake" appear>
+    <transition :name="myAnimation" appear>
       <p v-if="show">hello</p>
-    </transition>
-    <transition name="slide" type="animation" appear>
-      <p v-if="show">bye</p>
     </transition>
   </div>
 </template>
@@ -14,7 +14,8 @@
 export default {
   data() {
     return {
-      show: true
+      show: true,
+      myAnimation: "slide"
     };
   }
 };
@@ -25,7 +26,7 @@ export default {
   opacity: 0;
 }
 .fade-enter-active {
-  transition: opacity 2s;
+  transition: opacity 0.5s;
 }
 .fade-enter-to {
   opacity: 1;
@@ -34,7 +35,7 @@ export default {
   opacity: 1;
 }
 .fade-leave-active {
-  transition: opacity 2s;
+  transition: opacity 0.5s;
 }
 .fade-leave-to {
   opacity: 0;
@@ -46,11 +47,11 @@ export default {
 }
 .slide-enter-active {
   animation: slide-in 0.5s;
-  transition: opacity 5s;
+  transition: opacity 0.5s;
 }
 .slide-leave-active {
   animation: slide-in 0.5s reverse;
-  transition: opacity 5s;
+  transition: opacity 0.5s;
 }
 
 @keyframes slide-in {

@@ -8,16 +8,31 @@
       <p v-if="show" key="hello">hello</p>
       <p v-if="!show" key="bye">bye</p>
     </transition>
+
+    <button @click="myComponent = 'TransitionComponentA'">コンポーネントA</button>
+    <button @click="myComponent = 'TransitionComponentB'">コンポーネントB</button>
+    <transition name="fade" mode="out-in">
+      <component :is="myComponent"></component>
+    </transition>
   </div>
 </template>
 
 <script>
+import TransitionComponentA from "./TransitionComponentA.vue";
+import TransitionComponentB from "./TransitionComponentB.vue";
+
 export default {
   data() {
     return {
       show: true,
-      myAnimation: "slide"
+      myAnimation: "slide",
+      myComponent: TransitionComponentA
     };
+  },
+
+  components: {
+    TransitionComponentA,
+    TransitionComponentB
   }
 };
 </script>

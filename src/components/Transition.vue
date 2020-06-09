@@ -4,7 +4,7 @@
     <button @click="myAnimation = 'fade'">フェード</button>
     <p>{{ myAnimation }}</p>
     <button @click="show = !show">表示切り替え</button>
-    <transition :name="myAnimation" appear>
+    <transition :name="myAnimation" mode="out-in" appear>
       <p v-if="show" key="hello">hello</p>
       <p v-if="!show" key="bye">bye</p>
     </transition>

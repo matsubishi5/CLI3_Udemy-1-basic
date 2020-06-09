@@ -14,6 +14,10 @@
     <transition name="fade" mode="out-in">
       <component :is="myComponent"></component>
     </transition>
+
+    <transition :css="false" @enter="enter" @leave="leave">
+      <div class="circle" v-if="show"></div>
+    </transition>
   </div>
 </template>
 
@@ -30,6 +34,37 @@ export default {
     };
   },
 
+  methods: {
+    // beforeEnter(el, done) {},
+    enter(el, done) {
+      let scale = 0;
+      const interval = setInterval(() => {
+        el.style.transform = `scale(&{scale})`;
+        scale += 1;
+        if (scale > 1) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
+    },
+    // afterEnter(el, done) {},
+    // enterCancelled(el, done) {},
+    // beforeLeave(el, done) {},
+    leave(el, done) {
+      let scale = 1;
+      const interval = setInterval(() => {
+        el.style.transform = `scale(&{scale})`;
+        scale -= 1;
+        if (scale > 0) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
+    }
+    // afterLeave(el, done) {},
+    // leaveCancelled(el, done) {}
+  },
+
   components: {
     TransitionComponentA,
     TransitionComponentB
@@ -38,6 +73,14 @@ export default {
 </script>
 
 <style scoped>
+.circle {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background-color: pink;
+  border-radius: 100px;
+}
+
 .fade-enter {
   opacity: 0;
 }

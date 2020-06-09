@@ -5,7 +5,8 @@
     <p>{{ myAnimation }}</p>
     <button @click="show = !show">表示切り替え</button>
     <transition :name="myAnimation" appear>
-      <p v-if="show">hello</p>
+      <p v-if="show" key="hello">hello</p>
+      <p v-if="!show" key="bye">bye</p>
     </transition>
   </div>
 </template>
